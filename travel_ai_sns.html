@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>海外旅行AIアドバイスSNS</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
+      background: #f5f7fa;
+      margin: 0;
+    }
+    header {
+      background: #1e88e5;
+      color: #fff;
+      text-align: center;
+      padding: 16px;
+    }
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 16px;
+    }
+    section {
+      background: #fff;
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+    h2 {
+      border-bottom: 2px solid #eee;
+      padding-bottom: 8px;
+    }
+    label {
+      display: block;
+      margin-top: 8px;
+    }
+    input, select, button {
+      width: 100%;
+      padding: 8px;
+      margin-top: 4px;
+    }
+    button {
+      background: #1e88e5;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      margin-top: 12px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #1565c0;
+    }
+    .result {
+      background: #f0f4ff;
+      padding: 12px;
+      border-radius: 6px;
+      margin-top: 12px;
+      white-space: pre-line;
+    }
+    .post {
+      border-bottom: 1px solid #eee;
+      padding: 8px 0;
+    }
+    .tag {
+      display: inline-block;
+      background: #e3f2fd;
+      color: #1565c0;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 12px;
+      margin-right: 4px;
+    }
+    footer {
+      text-align: center;
+      font-size: 12px;
+      color: #666;
+      padding: 16px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>✈️ 海外旅行AIアドバイスSNS</h1>
+  <p>日本人向け・失敗しない海外旅行</p>
+</header>
+
+<main>
+
+  <section>
+    <h2>① AIに旅行先を相談</h2>
+
+    <label>旅行日数</label>
+    <input id="days" type="number" placeholder="例：5">
+
+    <label>予算（円）</label>
+    <input id="budget" type="number" placeholder="例：200000">
+
+    <label>時期</label>
+    <input id="season" type="text" placeholder="例：3月">
+
+    <label>興味</label>
+    <select id="interest">
+      <option value="観光">観光</option>
+      <option value="グルメ">グルメ</option>
+      <option value="自然">自然</option>
+      <option value="買い物">買い物</option>
+      <option value="ゆっくり">ゆっくり</option>
+    </select>
+
+    <button onclick="getAdvice()">AIに聞く</button>
+
+    <div id="aiResult" class="result"></div>
+  </section>
+
+  <section>
+    <h2>② 旅行SNS（日本人の体験談）</h2>
+
+    <div class="post">
+      <strong>🇹🇭 タイ・バンコク</strong><br>
+      <span class="tag">5日間</span>
+      <span class="tag">18万円</span>
+      <span class="tag">初心者向け</span>
+      <p>屋台グルメが最高。冷房が強いので羽織り必須。</p>
+    </div>
+
+    <div class="post">
+      <strong>🇰🇷 韓国・ソウル</strong><br>
+      <span class="tag">3日間</span>
+      <span class="tag">12万円</span>
+      <span class="tag">近場</span>
+      <p>日本語表記が多く、初海外でも安心。</p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  © 海外旅行AIアドバイスSNS / https://gptjp.net/
+</footer>
+
+<script>
+function getAdvice() {
+  const days = document.getElementById('days').value;
+  const budget = document.getElementById('budget').value;
+  const season = document.getElementById('season').value;
+  const interest = document.getElementById('interest').value;
+
+  if (!days || !budget || !season) {
+    alert('すべて入力してください');
+    return;
+  }
+
+  const result = `
+【AIおすすめ旅行先】
+
+🇹🇭 タイ（バンコク）
+
+理由：
+・${days}日間で満足度が高い
+・予算${budget}円以内で可能
+・${season}はベストシーズン
+・${interest}を楽しみやすい
+
+【日本人向け注意点】
+・スリに注意
+・チップ文化はほぼ不要
+・冷房が強い
+`;
+
+  document.getElementById('aiResult').innerText = result;
+}
+</script>
+
+</body>
+</html>
